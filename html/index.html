@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUCU Inventory — Your Items, Your Story</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="inventory-app" class="app-container hidden">
+
+        <!-- Top Navigation Header -->
+        <header class="top-nav-bar">
+            <!-- Left Branding -->
+            <div class="brand-wrap">
+                <div class="logo-monogram">B</div>
+                <div class="brand-text">
+                    <h1 class="brand-name">BUCU</h1>
+                    <div class="brand-sub">
+                        <span class="sub-inv">INVENTORY</span>
+                        <span class="sub-tag">Your Items, Your Story</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Navigation Tabs -->
+            <nav class="nav-tabs">
+                <button class="nav-tab-btn active" id="tab-nav-inventory" data-view="inventory">
+                    <span class="tab-icon">🎒</span> Inventori
+                </button>
+                <button class="nav-tab-btn" id="tab-nav-vehicle" data-view="vehicle">
+                    <span class="tab-icon">🚗</span> Kendaraan
+                </button>
+                <button class="nav-tab-btn" id="tab-nav-bank" data-view="bank">
+                    <span class="tab-icon">🏦</span> Bank
+                </button>
+                <button class="nav-tab-btn" id="tab-nav-character" data-view="character">
+                    <span class="tab-icon">👤</span> Karakter
+                </button>
+                <button class="nav-tab-btn" id="tab-nav-settings" data-view="settings">
+                    <span class="tab-icon">⚙️</span> Pengaturan
+                </button>
+            </nav>
+
+            <!-- Right Telemetry, Clock & Version -->
+            <div class="top-meta-wrap">
+                <div class="meta-clock-wrap">
+                    <div class="meta-time"><span id="top-time">18:42</span> <span class="weather-icon">☀️</span></div>
+                    <div class="meta-date" id="top-date">Senin, 12 Mei 2026</div>
+                </div>
+                <div class="bucu-version-badge">
+                    <span class="shield-mini">🛡️</span>
+                    <div class="ver-text">
+                        <span class="ver-core">BUCU CORE</span>
+                        <span class="ver-num">v1.0.0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main 3-Column Layout -->
+        <main class="main-layout-container">
+
+            <!-- ======================================================== -->
+            <!-- 1. LEFT COLUMN: CHARACTER PEDESTAL, EQUIPMENT & VITALS -->
+            <!-- ======================================================== -->
+            <section class="col-panel left-col">
+                <!-- Character Profile Header -->
+                <div class="char-profile-card">
+                    <div class="char-avatar-box">
+                        <div class="avatar-badge" id="avatar-badge">
+                            <span class="avatar-icon" id="avatar-icon">🤵</span>
+                        </div>
+                    </div>
+                    <div class="char-info-box">
+                        <h3 class="char-name" id="char-name">Mr.Bucu</h3>
+                        <div class="char-sub-row">
+                            <span class="citizen-id-text" id="citizen-id-text">Citizen ID: 1</span>
+                            <span class="role-badge" id="role-badge">Warga</span>
+                        </div>
+                    </div>
+                    <div class="char-shield-decor">🛡️</div>
+                </div>
+
+                <!-- Interactive Pedestal & 10 Equipment Slots -->
+                <div class="pedestal-showcase-container">
+                    <!-- Left Equipment Slots -->
+                    <div class="equipment-column eq-left">
+                        <div class="eq-slot-btn" data-eq="topi" title="Topi (Hat)">
+                            <span class="eq-icon">🧢</span>
+                            <span class="eq-label">Topi</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="kacamata" title="Kaca Mata (Glasses)">
+                            <span class="eq-icon">👓</span>
+                            <span class="eq-label">Kaca Mata</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="masker" title="Masker (Mask)">
+                            <span class="eq-icon">😷</span>
+                            <span class="eq-label">Masker</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="telinga" title="Telinga (Ears/Earrings)">
+                            <span class="eq-icon">🎧</span>
+                            <span class="eq-label">Telinga</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="jaket" title="Jaket (Jacket)">
+                            <span class="eq-icon">🧥</span>
+                            <span class="eq-label">Jaket</span>
+                        </div>
+                    </div>
+
+                    <!-- Center 3D Pedestal Viewport (Direct Framing of In-Game Character) -->
+                    <div class="pedestal-graphic-wrap" id="ped-viewport" title="Seret untuk memutar karakter 360°">
+                        <!-- Holographic Floor Pedestal Base with Glowing Rings -->
+                        <div class="pedestal-base-system" id="pedestal-base">
+                            <div class="pedestal-platform-ring"></div>
+                            <div class="pedestal-platform-glow"></div>
+                            <div class="pedestal-grid-lines"></div>
+                        </div>
+
+                        <!-- 360 Rotation Gesture Hint Badge -->
+                        <div class="ped-interactive-hint">
+                            <span class="hint-icon">🔄</span>
+                            <span class="hint-text">Seret untuk Memutar 360°</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Equipment Slots -->
+                    <div class="equipment-column eq-right">
+                        <div class="eq-slot-btn" data-eq="baju" title="Baju (Shirt)">
+                            <span class="eq-icon">👕</span>
+                            <span class="eq-label">Baju</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="celana" title="Celana (Pants)">
+                            <span class="eq-icon">👖</span>
+                            <span class="eq-label">Celana</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="sepatu" title="Sepatu (Shoes)">
+                            <span class="eq-icon">👟</span>
+                            <span class="eq-label">Sepatu</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="tas" title="Tas (Backpack)">
+                            <span class="eq-icon">🎒</span>
+                            <span class="eq-label">Tas</span>
+                        </div>
+                        <div class="eq-slot-btn" data-eq="aksesori" title="Aksesori (Accessories)">
+                            <span class="eq-icon">⌚</span>
+                            <span class="eq-label">Aksesori</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Vitals & Economy Dashboard -->
+                <div class="char-stats-dashboard">
+                    <!-- Left: Health, Armor, Hunger, Thirst Bars -->
+                    <div class="vitals-col">
+                        <!-- Health -->
+                        <div class="vital-entry">
+                            <div class="vital-head">
+                                <span class="v-label"><span class="v-icon">❤️</span> Health</span>
+                                <span class="v-pct" id="val-hp">100%</span>
+                            </div>
+                            <div class="v-track"><div id="bar-hp" class="v-fill fill-hp" style="width: 100%;"></div></div>
+                        </div>
+                        <!-- Armor -->
+                        <div class="vital-entry">
+                            <div class="vital-head">
+                                <span class="v-label"><span class="v-icon">🛡️</span> Armor</span>
+                                <span class="v-pct" id="val-armor">100%</span>
+                            </div>
+                            <div class="v-track"><div id="bar-armor" class="v-fill fill-armor" style="width: 100%;"></div></div>
+                        </div>
+                        <!-- Hunger -->
+                        <div class="vital-entry">
+                            <div class="vital-head">
+                                <span class="v-label"><span class="v-icon">🍖</span> Hunger</span>
+                                <span class="v-pct" id="val-hunger">78%</span>
+                            </div>
+                            <div class="v-track"><div id="bar-hunger" class="v-fill fill-hunger" style="width: 78%;"></div></div>
+                        </div>
+                        <!-- Thirst -->
+                        <div class="vital-entry">
+                            <div class="vital-head">
+                                <span class="v-label"><span class="v-icon">💧</span> Thirst</span>
+                                <span class="v-pct" id="val-thirst">62%</span>
+                            </div>
+                            <div class="v-track"><div id="bar-thirst" class="v-fill fill-thirst" style="width: 62%;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Job, Wallet, Bank, Weight -->
+                    <div class="economy-col">
+                        <div class="eco-entry">
+                            <span class="eco-icon">👤</span>
+                            <div class="eco-text">
+                                <span class="eco-title">Job</span>
+                                <span class="eco-val" id="val-job">Unemployed</span>
+                            </div>
+                        </div>
+                        <div class="eco-entry">
+                            <span class="eco-icon">💼</span>
+                            <div class="eco-text">
+                                <span class="eco-title">Wallet</span>
+                                <span class="eco-val text-green" id="val-wallet">$ 2,450</span>
+                            </div>
+                        </div>
+                        <div class="eco-entry">
+                            <span class="eco-icon">🏦</span>
+                            <div class="eco-text">
+                                <span class="eco-title">Bank</span>
+                                <span class="eco-val text-purple" id="val-bank">$ 18,750</span>
+                            </div>
+                        </div>
+                        <div class="eco-entry">
+                            <span class="eco-icon">🎒</span>
+                            <div class="eco-text">
+                                <span class="eco-title">Weight</span>
+                                <span class="eco-val" id="val-weight">12.4 / 30.0 kg</span>
+                                <div class="weight-mini-track">
+                                    <div id="bar-weight-mini" class="weight-mini-fill" style="width: 41%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ======================================================== -->
+            <!-- 2. CENTER COLUMN: MAIN INVENTORY & QUICK HOTBAR -->
+            <!-- ======================================================== -->
+            <section class="col-panel center-col">
+                <!-- Center Header: Title, Weight Bar, Search -->
+                <div class="inv-header-bar">
+                    <div class="inv-title-wrap">
+                        <span class="inv-bag-icon">🎒</span>
+                        <h2 class="inv-main-title" id="inv-header-title">Inventori</h2>
+                        <div class="inv-weight-progress-box">
+                            <span class="inv-weight-text" id="inv-capacity-text">12.4 / 30.0 kg</span>
+                            <div class="inv-bar-track">
+                                <div id="inv-capacity-fill" class="inv-bar-fill" style="width: 41%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inv-search-wrap">
+                        <span class="inv-search-icon">🔍</span>
+                        <input type="text" id="main-search-input" placeholder="Cari item..." autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="category-pills-bar">
+                    <button class="cat-pill active" data-cat="all"><span class="cat-icon">👥</span> Semua</button>
+                    <button class="cat-pill" data-cat="item"><span class="cat-icon">📦</span> Item</button>
+                    <button class="cat-pill" data-cat="dokumen"><span class="cat-icon">📄</span> Dokumen</button>
+                    <button class="cat-pill" data-cat="makanan"><span class="cat-icon">🍞</span> Makanan</button>
+                    <button class="cat-pill" data-cat="minuman"><span class="cat-icon">🥤</span> Minuman</button>
+                    <button class="cat-pill" data-cat="peralatan"><span class="cat-icon">🔧</span> Peralatan</button>
+                    <button class="cat-pill" data-cat="lainnya"><span class="cat-icon">✦</span> Lainnya</button>
+                </div>
+
+                <!-- Main Slots Grid (5 columns x 5 rows = 25 slots, scrollable) -->
+                <div class="grid-scroll-container">
+                    <div class="inventory-slots-grid" id="main-inventory-grid">
+                        <!-- Dynamically populated via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Hotbar Cepat (Quick Slots 1 to 5) -->
+                <div class="quick-hotbar-container">
+                    <div class="hotbar-title">Hotbar Cepat</div>
+                    <div class="hotbar-slots-row" id="hotbar-slots-row">
+                        <!-- 5 Hotbar Slots -->
+                        <div class="hotbar-card" data-hotbar="1"><span class="hotbar-num">1</span><div class="hotbar-item-content"></div></div>
+                        <div class="hotbar-card" data-hotbar="2"><span class="hotbar-num">2</span><div class="hotbar-item-content"></div></div>
+                        <div class="hotbar-card" data-hotbar="3"><span class="hotbar-num">3</span><div class="hotbar-item-content"></div></div>
+                        <div class="hotbar-card" data-hotbar="4"><span class="hotbar-num">4</span><div class="hotbar-item-content"></div></div>
+                        <div class="hotbar-card" data-hotbar="5"><span class="hotbar-num">5</span><div class="hotbar-item-content"></div></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ======================================================== -->
+            <!-- 3. RIGHT COLUMN: ITEM INSPECTOR & DETAILED ACTIONS -->
+            <!-- ======================================================== -->
+            <section class="col-panel right-col">
+                <!-- Inspector Graphic Header -->
+                <div class="inspector-visual-card">
+                    <div class="inspector-item-img-box" id="inspector-img-box">
+                        <!-- Large high-res 3D item graphic -->
+                        <img src="images/bread.png" alt="" id="inspector-big-img" class="inspector-big-img">
+                    </div>
+                    <div class="inspector-titles">
+                        <h2 class="inspector-name" id="inspect-name">Uang Tunai</h2>
+                        <span class="inspector-subtitle" id="inspect-sub">Item | Uang</span>
+                    </div>
+                    <div class="inspector-metrics-row">
+                        <div class="metric-block">
+                            <span class="m-label">Jumlah</span>
+                            <span class="m-val" id="inspect-count">20</span>
+                        </div>
+                        <div class="metric-block text-right">
+                            <span class="m-label">Berat Total</span>
+                            <span class="m-val" id="inspect-weight">0.2 kg</span>
+                        </div>
+                    </div>
+                    <p class="inspector-desc-text" id="inspect-desc">
+                        Uang tunai dalam bentuk rupiah. Dapat digunakan untuk transaksi atau pembayaran.
+                    </p>
+                </div>
+
+                <!-- Action Buttons Vertical Stack -->
+                <div class="actions-vertical-group">
+                    <button class="btn-inv-action btn-primary-purple" id="btn-action-use">
+                        <span class="btn-ico">🖐️</span> Gunakan
+                    </button>
+                    <button class="btn-inv-action btn-secondary-purple" id="btn-action-split">
+                        <span class="btn-ico">🔗</span> Bagi 50%
+                    </button>
+                    <button class="btn-inv-action btn-secondary-purple" id="btn-action-give">
+                        <span class="btn-ico">👤</span> Beri Teman
+                    </button>
+                    <button class="btn-inv-action btn-danger-outline" id="btn-action-drop">
+                        <span class="btn-ico">🗑️</span> Jatuhkan
+                    </button>
+                    <button class="btn-inv-action btn-inspect-outline" id="btn-action-inspect">
+                        <span class="btn-ico">🔍</span> Periksa
+                    </button>
+                </div>
+
+                <!-- Informasi Item Metadata Details Table -->
+                <div class="item-metadata-card">
+                    <h4 class="meta-section-title">Informasi Item</h4>
+                    <div class="meta-table-body" id="metadata-table-body">
+                        <div class="meta-row">
+                            <span class="meta-label">Tipe</span>
+                            <span class="meta-val" id="meta-val-type">Uang</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">Stackable</span>
+                            <span class="meta-val" id="meta-val-stack">Ya</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">Dapat Dijual</span>
+                            <span class="meta-val" id="meta-val-sell">Ya</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">ID Item</span>
+                            <span class="meta-val" id="meta-val-id">cash</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Controls Guide Footer -->
+        <footer class="bottom-controls-bar">
+            <div class="control-badge"><kbd>F2</kbd> Buka Inventori</div>
+            <div class="control-badge"><kbd>TAB</kbd> Tutup</div>
+            <div class="control-badge"><span class="mouse-ico">🖱️</span> Pilih</div>
+        </footer>
+
+        <!-- Physical Card Hologram Badge Modal Overlay -->
+        <div id="card-modal" class="card-modal-backdrop hidden">
+            <div class="physical-card-container">
+                <div class="card-header">
+                    <div class="seal-icon">✦</div>
+                    <span id="card-header-title">STATE OF SAN ANDREAS — CITIZEN ID</span>
+                    <div class="seal-icon">✦</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-photo-box"><div class="photo-placeholder">👤</div></div>
+                    <div class="card-details">
+                        <div class="data-row"><span class="data-label">Full Name:</span><span class="data-value" id="card-val-name">Rizky Ardiansyah</span></div>
+                        <div class="data-row"><span class="data-label">Citizen ID:</span><span class="data-value" id="card-val-id">2505-0001</span></div>
+                        <div class="data-row"><span class="data-label">Date of Birth:</span><span class="data-value" id="card-val-dob">2000-01-01</span></div>
+                        <div class="data-row"><span class="data-label">Gender:</span><span class="data-value" id="card-val-gender">Male</span></div>
+                        <div class="data-row"><span class="data-label">Licenses:</span><span class="data-value" id="card-val-licenses">Class C Driver License</span></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="hologram-seal">BUCU AUTHENTICATED</span>
+                    <button class="btn-close-modal" id="btn-close-card">CLOSE</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/webaudio.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
